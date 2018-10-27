@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KotlinContactApp</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kotlin_contact_app">Kotlin Contact App</string>
+    <string name="android_sample_app_with_kotlin">Android sample app with Kotlin.</string>
+    <string name="you_not_have_at_account">You not have at account?</string>
+    <string name="register">Register</string>
+</resources>
