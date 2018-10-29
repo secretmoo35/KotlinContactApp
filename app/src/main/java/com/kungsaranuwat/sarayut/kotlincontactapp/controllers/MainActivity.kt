@@ -1,7 +1,8 @@
-package com.kungsaranuwat.sarayut.kotlincontactapp
+package com.kungsaranuwat.sarayut.kotlincontactapp.controllers
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.kungsaranuwat.sarayut.kotlincontactapp.R
 
 class MainActivity : AppCompatActivity() {
 
