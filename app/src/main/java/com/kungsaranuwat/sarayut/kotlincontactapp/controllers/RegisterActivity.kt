@@ -18,6 +18,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+
+
         registerToolbar.setNavigationIcon(R.drawable.ic_action_back)
         registerToolbar.setNavigationOnClickListener {
             onBackPressed()
@@ -26,6 +28,8 @@ class RegisterActivity : AppCompatActivity() {
         loginConstraintLayout.setOnClickListener {
             hideKeyboard()
         }
+
+        loading(false)
     }
 
     private fun hideKeyboard() {
@@ -33,9 +37,29 @@ class RegisterActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 
+    private fun loading(isLoading : Boolean){
+        if(isLoading) {
+            progressBar.visibility = View.VISIBLE
+            registerButton.isEnabled = false
+            usernameInput.isEnabled = false
+            passwordInput.isEnabled = false
+            firstNameInput.isEnabled = false
+            lastNameInput.isEnabled = false
+            emailInput.isEnabled = false
+        }else {
+            progressBar.visibility = View.INVISIBLE
+            registerButton.isEnabled = true
+            usernameInput.isEnabled = true
+            passwordInput.isEnabled = true
+            firstNameInput.isEnabled = true
+            lastNameInput.isEnabled = true
+            emailInput.isEnabled = true
+        }
+    }
+
     fun onRegister(view: View) {
 
-        this.hideKeyboard()
+        hideKeyboard()
 
         val username = usernameInput?.text.toString()
         val password = passwordInput?.text.toString()
@@ -51,13 +75,20 @@ class RegisterActivity : AppCompatActivity() {
             return Toast.makeText(this, "Email is invalid.", Toast.LENGTH_SHORT).show()
         }
 
+        loading(true)
+
         val registerData = RegisterModel(firstName,lastName,email,username,password)
 
         AuthenService.registerUser(this, registerData) {complete ->
+
+            loading(false)
+
             if(complete) {
                 val intent = Intent(this, ContactListActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please check your information.", Toast.LENGTH_SHORT)
             }
         }
 
