@@ -11,4 +11,8 @@
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="e_mail">E-mail</string>
+    <string name="profile_name">Profile name</string>
+    <string name="example_email_com">example@email.com</string>
+    <string name="address_detail">Address detail</string>
+    <string name="contact_list">Contact List</string>
 </resources>

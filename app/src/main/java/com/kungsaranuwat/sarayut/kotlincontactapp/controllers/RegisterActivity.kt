@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        loginConstraintLayout.setOnClickListener {
+        registerConstraintLayout.setOnClickListener {
             hideKeyboard()
         }
 
@@ -87,8 +87,6 @@ class RegisterActivity : AppCompatActivity() {
                 val intent = Intent(this, ContactListActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
-            } else {
-                Toast.makeText(this, "Please check your information.", Toast.LENGTH_SHORT)
             }
         }
 
