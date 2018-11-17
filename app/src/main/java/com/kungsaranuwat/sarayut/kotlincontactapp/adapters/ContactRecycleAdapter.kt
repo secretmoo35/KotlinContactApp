@@ -25,7 +25,7 @@ class ContactRecycleAdapter (val context: Context, val contacts: List<ContactMod
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder?.binding(contacts[position], context)
+        holder?.binding(contacts[position], context, position)
     }
 
     inner class Holder(itemView: View?, val itemClick: (ContactModel) -> Unit) : RecyclerView.ViewHolder(itemView!!) {
@@ -35,9 +35,9 @@ class ContactRecycleAdapter (val context: Context, val contacts: List<ContactMod
         private val profileEmail = itemView?.findViewById<TextView>(R.id.profileEmail)
 
         @SuppressLint("SetTextI18n")
-        fun binding(contact: ContactModel, context:Context) {
+        fun binding(contact: ContactModel, context:Context, position: Int) {
 
-            Picasso.with(context).load(contact.picture.large).into(profileImage);
+            Picasso.with(context).load(contacts[position].picture.large).placeholder(R.drawable.profile_none).into(profileImage)
             profileName?.text = "${contact.name.title} ${contact.name.first} ${contact.name.last}"
             profileEmail?.text = contact.email
 

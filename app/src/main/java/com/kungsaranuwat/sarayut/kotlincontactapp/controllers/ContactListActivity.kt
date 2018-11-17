@@ -1,5 +1,6 @@
 package com.kungsaranuwat.sarayut.kotlincontactapp.controllers
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -26,6 +27,9 @@ class ContactListActivity : AppCompatActivity() {
         loading(true)
 
         ContactService.getContactList(this,1000) { complete ->
+
+            loading(false)
+
             if(complete) {
                 adapter = ContactRecycleAdapter(this, ContactService.contacts) { contact ->
 
@@ -34,9 +38,11 @@ class ContactListActivity : AppCompatActivity() {
 
                 val layoutManager = LinearLayoutManager(this)
                 contactView.layoutManager = layoutManager
+            }else{
+                var intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
-
-            loading(false)
 
         }
     }

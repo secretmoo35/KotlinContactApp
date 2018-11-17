@@ -5,7 +5,17 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="wrap_content">
 
-    <ImageView
+    <!--<ImageView-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars[2]"-->
+            <!--android:id="@+id/profileImageView"-->
+            <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"-->
+            <!--android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"-->
+            <!--android:scaleType="centerCrop" android:layout_marginBottom="16dp"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent" tools:ignore="ContentDescription"-->
+    <!--/>-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars[2]"
             android:id="@+id/profileImageView"
@@ -13,16 +23,18 @@
             android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent" tools:ignore="ContentDescription"
-    />
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorPrimary"/>
+
     <TextView
             android:text="@string/profile_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/profileName" android:layout_marginTop="24dp"
+            android:id="@+id/profileName"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/profileImageView"
             android:layout_marginStart="16dp" app:layout_constraintHorizontal_bias="0.0" android:textStyle="bold"
-            android:textSize="18sp" android:textAlignment="textStart"/>
+            android:textSize="18sp" android:textAlignment="textStart" android:layout_marginTop="22dp"/>
     <TextView
             android:text="@string/example_email_com"
             android:layout_width="0dp"
@@ -30,5 +42,6 @@
             android:id="@+id/profileEmail" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profileImageView" android:layout_marginStart="16dp"
             app:layout_constraintTop_toBottomOf="@+id/profileName" android:textAlignment="textStart"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>
